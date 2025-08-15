@@ -9,9 +9,9 @@ use App\Livewire\IndexPage;
 
 // Route::get('/', [ProductController::class, 'index'])->name('products.index');
 // Route::get('products/index', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/pizza', function () {
-    return view('products/pizza');
-});
+// Route::get('/products/pizza', function () {
+//     return view('products/pizza');
+// });
 Route::get('/', function () {
     return view('home');
 });
