@@ -1,0 +1,48 @@
+<!-- Modal -->
+<div wire:ignore.self class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit {{ $title }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                    <input wire:model="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                        placeholder="Enter Name">
+                    @error('name')
+                        <small class="text-danger">
+                            {{ $message }}
+                        </small>
+                    @enderror
+                </div>
+
+                <div class="row mt-3">
+                    @foreach ($allPermissions as $perm)
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" wire:model="permissions"
+                                    value="{{ $perm->name }}">
+                                <label class="form-check-label">
+                                    {{ $perm->name }}
+                                </label>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i
+                        class="fas fa-times mr-1"></i>Cancel</button>
+                <button wire:click="update({{ $role_id }})" type="button" class="btn btn-warning btn-sm"><i
+                        class="fas fa-edit mr-1"></i>Update</button>
+            </div>
+        </div>
+    </div>
+</div>
